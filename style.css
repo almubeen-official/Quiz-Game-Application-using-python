@@ -1,150 +1,57 @@
-body, input  { font-family: sans-serif; color: #000; text-align: center;
-               margin: 1em; padding: 0; font-size: 15px; }
-h1, h2, h3   { font-weight: normal; }
-
-input        { background-color: #fff; margin: 0; text-align: left;
-               outline: none !important; }
-input[type="submit"] { padding: 3px 6px; }
-a            { color: #11557C; }
-a:hover      { color: #177199; }
-pre, code,
-textarea     { font-family: monospace; font-size: 14px; }
-
-div.debugger { text-align: left; padding: 12px; margin: auto;
-               background-color: white; }
-h1           { font-size: 36px; margin: 0 0 0.3em 0; }
-div.detail { cursor: pointer; }
-div.detail p { margin: 0 0 8px 13px; font-size: 14px; white-space: pre-wrap;
-               font-family: monospace; }
-div.explanation { margin: 20px 13px; font-size: 15px; color: #555; }
-div.footer   { font-size: 13px; text-align: right; margin: 30px 0;
-               color: #86989B; }
-
-h2           { font-size: 16px; margin: 1.3em 0 0.0 0; padding: 9px;
-               background-color: #11557C; color: white; }
-h2 em, h3 em { font-style: normal; color: #A5D6D9; font-weight: normal; }
-
-div.traceback, div.plain { border: 1px solid #ddd; margin: 0 0 1em 0; padding: 10px; }
-div.plain p      { margin: 0; }
-div.plain textarea,
-div.plain pre { margin: 10px 0 0 0; padding: 4px;
-                background-color: #E8EFF0; border: 1px solid #D3E7E9; }
-div.plain textarea { width: 99%; height: 300px; }
-div.traceback h3 { font-size: 1em; margin: 0 0 0.8em 0; }
-div.traceback ul { list-style: none; margin: 0; padding: 0 0 0 1em; }
-div.traceback h4 { font-size: 13px; font-weight: normal; margin: 0.7em 0 0.1em 0; }
-div.traceback pre { margin: 0; padding: 5px 0 3px 15px;
-                    background-color: #E8EFF0; border: 1px solid #D3E7E9; }
-div.traceback .library .current { background: white; color: #555; }
-div.traceback .expanded .current { background: #E8EFF0; color: black; }
-div.traceback pre:hover { background-color: #DDECEE; color: black; cursor: pointer; }
-div.traceback div.source.expanded pre + pre { border-top: none; }
-
-div.traceback span.ws { display: none; }
-div.traceback pre.before, div.traceback pre.after { display: none; background: white; }
-div.traceback div.source.expanded pre.before,
-div.traceback div.source.expanded pre.after {
-    display: block;
+:root{
+  --bg1:#0f172a;
+  --bg2:#0b1226;
+  --card: rgba(255,255,255,0.04);
+  --accent:#ff7a59;
+  --accent2:#ffd166;
+  --muted: #cbd5e1;
 }
 
-div.traceback div.source.expanded span.ws {
-    display: inline;
+*{box-sizing:border-box}
+body{ margin:0; font-family:Inter, "Segoe UI", Roboto, Arial; background: linear-gradient(135deg,#06113b 0%, #0f172a 40%, #153973 100%); color:#eef2ff; min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;}
+
+.bg{display:flex; align-items:center; justify-content:center; min-height:100vh;}
+
+.card{ background:var(--card); backdrop-filter: blur(8px); border-radius:14px; padding:28px; box-shadow: 0 8px 30px rgba(2,8,23,0.6); width:420px; max-width:96%; animation:fadeIn .6s ease both;}
+.wide-card{ width:900px; padding:28px; }
+.center-card{ text-align:center; }
+
+.brand{ font-size:28px; margin:0 0 6px; color:var(--accent2); letter-spacing:0.6px; }
+.muted{ color:var(--muted); margin:6px 0 18px; }
+.small{ font-size:12px; color:var(--muted) }
+
+.form input[type="text"],
+.form input[type="password"],
+input[name="player_name"]{
+  width:100%; padding:12px 14px; margin:8px 0; border-radius:8px; border:none; outline:none; font-size:15px;
+  background: rgba(255,255,255,0.04); color: #fff;
+  transition: transform .12s ease, box-shadow .12s ease;
 }
+.form input:focus{ transform:translateY(-2px); box-shadow:0 6px 18px rgba(0,0,0,0.45); }
 
-div.traceback blockquote { margin: 1em 0 0 0; padding: 0; white-space: pre-line; }
-div.traceback img { float: right; padding: 2px; margin: -3px 2px 0 0; display: none; }
-div.traceback img:hover { background-color: #ddd; cursor: pointer;
-                          border-color: #BFDDE0; }
-div.traceback pre:hover img { display: block; }
-div.traceback cite.filename { font-style: normal; color: #3B666B; }
+.btn{ display:inline-block; text-decoration:none; padding:10px 14px; border-radius:10px; cursor:pointer; border:none; font-weight:600; }
+.btn.primary{ background:linear-gradient(90deg,var(--accent),#ffb48f); color:#071029; box-shadow: 0 8px 24px rgba(255,122,89,0.14); }
+.btn.ghost{ background:transparent; color:var(--muted); border:1px solid rgba(255,255,255,0.06); }
+.btn.big{ padding:14px 18px; font-size:16px; }
 
-pre.console { border: 1px solid #ccc; background: white!important;
-              color: black; padding: 5px!important;
-              margin: 3px 0 0 0!important; cursor: default!important;
-              max-height: 400px; overflow: auto; }
-pre.console form { color: #555; }
-pre.console input { background-color: transparent; color: #555;
-                    width: 90%; font-family: monospace; font-size: 14px;
-                     border: none!important; }
+.hint{ font-size:13px; color:var(--muted); margin-top:10px; }
 
-span.string { color: #30799B; }
-span.number { color: #9C1A1C; }
-span.help   { color: #3A7734; }
-span.object { color: #485F6E; }
-span.extended { opacity: 0.5; }
-span.extended:hover { opacity: 1; }
-a.toggle { text-decoration: none; background-repeat: no-repeat;
-           background-position: center center;
-           background-image: url(?__debugger__=yes&cmd=resource&f=more.png); }
-a.toggle:hover { background-color: #444; }
-a.open { background-image: url(?__debugger__=yes&cmd=resource&f=less.png); }
+.error{ color:#ffb4b4; margin-top:10px; }
 
-pre.console div.traceback,
-pre.console div.box { margin: 5px 10px; white-space: normal;
-                      border: 1px solid #11557C; padding: 10px;
-                      font-family: sans-serif;  }
-pre.console div.box h3,
-pre.console div.traceback h3 { margin: -10px -10px 10px -10px; padding: 5px;
-                               background: #11557C; color: white; }
+/* Quiz layout */
+.quiz-header{ display:flex; align-items:center; justify-content:space-between; }
+.question-block{ background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:14px; border-radius:10px; margin-bottom:12px; display:flex; gap:14px; align-items:flex-start; }
+.q-number{ background:rgba(255,255,255,0.04); padding:8px 10px; border-radius:8px; font-weight:700; color:var(--accent2)}
+.q-text{ font-weight:600; }
+.options{ display:flex; flex-direction:column; margin-top:8px; }
+.option{ display:flex; align-items:center; gap:10px; padding:8px 10px; border-radius:8px; cursor:pointer; transition:background .12s ease; }
+.option input{ width:16px; height:16px; }
+.option:hover{ background: rgba(255,255,255,0.02); }
 
-pre.console div.traceback pre:hover { cursor: default; background: #E8EFF0; }
-pre.console div.traceback pre.syntaxerror { background: inherit; border: none;
-                                            margin: 20px -10px -10px -10px;
-                                            padding: 10px; border-top: 1px solid #BFDDE0;
-                                            background: #E8EFF0; }
-pre.console div.noframe-traceback pre.syntaxerror { margin-top: -10px; border: none; }
+.actions{ display:flex; gap:12px; margin-top:18px; align-items:center; }
 
-pre.console div.box pre.repr { padding: 0; margin: 0; background-color: white; border: none; }
-pre.console div.box table { margin-top: 6px; }
-pre.console div.box pre { border: none; }
-pre.console div.box pre.help { background-color: white; }
-pre.console div.box pre.help:hover { cursor: default; }
-pre.console table tr { vertical-align: top; }
-div.console { border: 1px solid #ccc; padding: 4px; background-color: #fafafa; }
+/* leaderboard */
+.leaderboard ol{ text-align:left; color:var(--muted); padding-left:18px; }
 
-div.traceback pre, div.console pre {
-    white-space: pre-wrap;       /* css-3 should we be so lucky... */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -pre-wrap;      /* Opera 4-6 ?? */
-    white-space: -o-pre-wrap;    /* Opera 7 ?? */
-    word-wrap: break-word;       /* Internet Explorer 5.5+ */
-    _white-space: pre;           /* IE only hack to re-specify in
-                                 addition to word-wrap  */
-}
-
-
-div.pin-prompt {
-    position: absolute;
-    display: none;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: rgba(255, 255, 255, 0.8);
-}
-
-div.pin-prompt .inner {
-    background: #eee;
-    padding: 10px 50px;
-    width: 350px;
-    margin: 10% auto 0 auto;
-    border: 1px solid #ccc;
-    border-radius: 2px;
-}
-
-div.exc-divider {
-    margin: 0.7em 0 0 -1em;
-    padding: 0.5em;
-    background: #11557C;
-    color: #ddd;
-    border: 1px solid #ddd;
-}
-
-.console.active {
-    max-height: 0!important;
-    display: none;
-}
-
-.hidden {
-    display: none;
-}
+/* small animations */
+@keyframes fadeIn { from{ opacity:0; transform: translateY(10px);} to{opacity:1; transform:none;} }
